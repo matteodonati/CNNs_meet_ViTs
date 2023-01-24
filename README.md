@@ -1,4 +1,4 @@
-# CNNs meet ViT
+# CNNs meet ViTs
 
 This repository include an unofficial implementation of the CMT architecture presented in the [CMT: Convolutional Neural Networks Meet Vision Transformers](https://arxiv.org/abs/2107.06263) paper by Guo et al. (2021).
 
