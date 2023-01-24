@@ -1,6 +1,6 @@
 # CNNs meet ViTs
 
-This repository include an unofficial implementation of the CMT architecture presented in the [CMT: Convolutional Neural Networks Meet Vision Transformers](https://arxiv.org/abs/2107.06263) paper by Guo et al. (2021).
+This repository include an unofficial implementation of the CMT architecture introduced in the [CMT: Convolutional Neural Networks Meet Vision Transformers](https://arxiv.org/abs/2107.06263) paper by Guo et al. (2021).
 
 The `.ipynb` notebook includes the definition of all modules needed to define the CMT-Ti architecture with the only modification of having an input resolution of ![](https://latex.codecogs.com/gif.latex?%5Cinline%20224%20%5Ctimes%20224) instead of ![](https://latex.codecogs.com/gif.latex?%5Cinline%20160%20%5Ctimes%20160). Moreover, the aforementioned notebook defines and train  the following four different models on CIFAR-10:
 
