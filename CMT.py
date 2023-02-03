@@ -5,6 +5,15 @@ import torch.nn as nn
 
 # Stem module of the CMT architecture.
 class Stem(nn.Module):
+
+  """
+  The stem block of the CMT architecture:
+	
+   - 3 × 3, 16, stride 2 convolution.
+   - [3 × 3, 16] × 2 convolutions.
+	 
+  Each layer is followed by a batch norm layer and GELU activation.
+	"""
     
   # Constructor.
   def __init__(self, in_channels, out_channels):
@@ -41,6 +50,14 @@ class Stem(nn.Module):
 	
 # Reduced stem module of the CMT architecture.
 class ReducedStem(nn.Module):
+
+  """
+  The stem block of the reduced CMT architecture:
+	
+   - 3 × 3, 16 convolution.
+	 
+  The single layer is followed by a batch norm layer and GELU activation.
+	"""
     
   # Constructor.
   def __init__(self, in_channels, out_channels):
@@ -64,6 +81,14 @@ class ReducedStem(nn.Module):
 # Patch embedding module of the CMT architecture.
 class PatchEmbedding(nn.Module):
 
+  """
+  The patch embedding block of the CMT architecture:
+	
+   - 2 × 2, stride 2 convolution.
+	 
+  The single layer is followed by layer norm.
+	"""
+
   # Constructor.
   def __init__(self, in_channels, out_channels):
 
@@ -82,6 +107,14 @@ class PatchEmbedding(nn.Module):
 # Local Perception Unit: LPU(X) = DWConv(X) + X.
 class LPU(nn.Module):
 
+  """
+  The patch embedding block of the CMT architecture:
+	
+   - 3 × 3, depthwise convolution.
+	 
+  The LPU also adds a residual connection to compute LPU(X) = DWConv(X) + X.
+	"""
+
   # Constructor.
   def __init__(self, in_channels, out_channels):
 
@@ -97,6 +130,10 @@ class LPU(nn.Module):
 	
 # Standard Multi-Head-Self-Attention.
 class MHSA(nn.Module):
+
+  """
+  The standard multi-head self-attention module.
+  """
     
   # Constructor.
   def __init__(self, d, d_k, d_v, heads):
@@ -162,6 +199,10 @@ class MHSA(nn.Module):
 	
 # Lightweight Multi-Head-Self-Attention.
 class LMHSA(nn.Module):
+
+  """
+  The lightweight multi-head self-attention module.
+  """
     
   # Constructor.
   def __init__(self, input_size, d, d_k, d_v, stride, heads):
@@ -253,6 +294,19 @@ class LMHSA(nn.Module):
 # Inverted Residual Feed-forward Network: IRFFN(X) = Conv(F(Conv(X))), F(X) = DWConv(X) + X.
 class IRFFN(nn.Module):
 
+  """
+  The IRFFN block of the CMT architecture:
+	
+   - 1 × 1, Cout = Cin * R convolution.
+   - 3 × 3, Cout = Cin depthwise convolution.
+   - 1 × 1, Cout = Cin / R convolution.
+	 
+  The input of the IRFFN is layer normalized, and each layer is followed 
+  by a batch norm layer and GELU activation. Moreover, The IRFFN module 
+  also adds a residual connection to compute IRFFN(X) = Conv(F(Conv(X))),
+  F(X) = DWConv(X) + X.
+  """
+
   # Constructor.
   def __init__(self, in_channels, R):
 
@@ -294,6 +348,14 @@ class IRFFN(nn.Module):
 # CMT block of the CMT architecture.
 class CMTBlock(nn.Module):
 
+  """
+  The CMT block of the CMT architecture:
+	
+   - LPU block.
+   - Eventual (L)MHSA block.
+   - IRFFN.
+  """
+
   # Constructor.
   def __init__(self, input_size, k, d_k, d_v, heads, R, channels, attention_type):
 
@@ -327,6 +389,16 @@ class CMTBlock(nn.Module):
 	
 # CMT architecture.
 class CMT(nn.Module):
+
+  """
+  The CMT architecture:
+	
+   - The stem block.
+   - Four stages composed of different CMT blocks and patch embedding layers.
+   - Global average pooling.
+   - 1 × 1, 1280 convolution.
+   - Classification head.
+  """
 
   # Constructor.
   def __init__(self, in_channels, stem_channels, channels, block_layers, k, heads, R, input_size, classes, attention_type):
@@ -384,6 +456,16 @@ class CMT(nn.Module):
 	
 # Reduced CMT architecture.
 class ReducedCMT(nn.Module):
+
+  """
+  The reduced CMT architecture:
+	
+   - The reduced stem block.
+   - Three stages composed of the same number of CMT blocks and patch embedding layers.
+   - Global average pooling.
+   - 1 × 1, 256 convolution.
+   - Classification head.
+  """
 
   # Constructor.
   def __init__(self, in_channels, stem_channels, channels, block_layers, k, heads, R, input_size, classes, attention_type):

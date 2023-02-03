@@ -249,7 +249,7 @@ def load_checkpoint(path, model, optimizer, scheduler):
   return model, optimizer, scheduler
   
 # Tests a model.
-def test(model, test_loader):
+def test(model, test_loader, device = "cuda"):
   
   # Testing.
   model.eval()
@@ -343,7 +343,7 @@ def plot_validation(m_names, histories):
 # Plots test accuracy vs. FLOPs.
 def plot_accuracy_vs_flops(m_names, flops, test_acc):
 
-	# Creating the figure and axes.
+  # Creating the figure and axes.
   fig, ax = plt.subplots(1, 1, figsize = (6.15, 4))
 
   # Scatter plot.
