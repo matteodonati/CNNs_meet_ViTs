@@ -278,7 +278,7 @@ def test(model, test_loader, device = "cuda"):
   return y_pred, y_true
   
 # Reads files.
-def read_output_files(m_names):
+def read_output_files(m_names, resolution = "224x224"):
 
   # Training histories.
   histories = {}
@@ -288,15 +288,15 @@ def read_output_files(m_names):
 
   # Reading histories and test accuracies.
   for name in m_names:
-    test_acc[name] = float(np.load(f"{name}_accuracy_224x224.npy"))
-    with open(f"{name}_history_224x224.pkl", "rb") as f: 
+    test_acc[name] = float(np.load(f"{name}_accuracy_{resolution}.npy"))
+    with open(f"{name}_history_{resolution}.pkl", "rb") as f: 
       histories[name] = pickle.load(f)
   
   # Returning histories and test_acc.
   return histories, test_acc
 
 # Plots the validation losses and accuracies.
-def plot_validation(m_names, histories):
+def plot_validation(m_names, histories, xy1, xy2):
 
   # Creating the figure and axes.
   fig, (ax1, ax2) = plt.subplots(1, 2, figsize = (14, 4))
@@ -317,8 +317,8 @@ def plot_validation(m_names, histories):
     ax1_ins.plot(x, histories[name]["val_loss"])
     ax2_ins.plot(x, histories[name]["val_accuracy"])
 
-  x1_min, x1_max, y1_min, y1_max = 24, 25.1, 0.375, 0.41
-  x2_min, x2_max, y2_min, y2_max = 24, 25.1, 0.855, 0.89
+  x1_min, x1_max, y1_min, y1_max = xy1
+  x2_min, x2_max, y2_min, y2_max = xy2
 
   ax1_ins.set_xlim(x1_min, x1_max)
   ax1_ins.set_ylim(y1_min, y1_max)
