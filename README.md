@@ -15,9 +15,7 @@ The definitions of all modules needed to define the CMT-Ti architecture can be f
 
 ## Training
 
-All `CNNs_meet_ViTs_224x224.ipynb` models have been trained for ![](https://latex.codecogs.com/gif.latex?%5Cinline%2025) epochs, using cross-entopy, AdamW with an amount of weight decay equals to ![](https://latex.codecogs.com/gif.latex?%5Cinline%201e%5Ctext%7B-%7D5), an initial learning rate of ![](https://latex.codecogs.com/gif.latex?%5Cinline%206e%5Ctext%7B-%7D5), and a cosine annealing learning rate schedule. 
-
-All `CNNs_meet_ViTs_32x32.ipynb` models have been trained for ![](https://latex.codecogs.com/gif.latex?%5Cinline%2025) epochs, using cross-entopy, AdamW with an amount of weight decay equals to ![](https://latex.codecogs.com/gif.latex?%5Cinline%201e%5Ctext%7B-%7D5), an initial learning rate of ![](https://latex.codecogs.com/gif.latex?%5Cinline%201e%5Ctext%7B-%7D2), and a cosine annealing learning rate schedule.
+All models are trained for ![](https://latex.codecogs.com/gif.latex?%5Cinline%2025) epochs, using cross-entopy, AdamW with an amount of weight decay equals to ![](https://latex.codecogs.com/gif.latex?%5Cinline%201e%5Ctext%7B-%7D5), an initial learning rate of ![](https://latex.codecogs.com/gif.latex?%5Cinline%206e%5Ctext%7B-%7D5), and a cosine annealing learning rate schedule. 
 
 ## Results
 
