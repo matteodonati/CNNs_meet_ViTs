@@ -9,7 +9,7 @@ Each `.ipynb` notebook defines a total of four models:
 | ![](https://latex.codecogs.com/gif.latex?%5Cinline%20m_1) | CMT | CMT-Ti with lightweight multi-head self-attention |
 | ![](https://latex.codecogs.com/gif.latex?%5Cinline%20m_2) | CMT | CMT-Ti with standard multi-head self-attention |
 | ![](https://latex.codecogs.com/gif.latex?%5Cinline%20m_3) | CMT | CMT-Ti without multi-head self-attention |
-| ![](https://latex.codecogs.com/gif.latex?%5Cinline%20m_4) | ResNet | ResNet-18 (224 × 224) or ResNet-110 (32 × 32) |
+| ![](https://latex.codecogs.com/gif.latex?%5Cinline%20m_4) | ResNet | ResNet-18 (![](https://latex.codecogs.com/svg.image?\inline%20224%20\times%20224) resolution) or ResNet-110 (![](https://latex.codecogs.com/svg.image?\inline%2032%20\times%2032) resolution) |
 
 The definitions of all modules needed to define the CMT-Ti architecture can be found in the `CMT.py` file.
 
