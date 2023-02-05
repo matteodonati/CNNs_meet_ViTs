@@ -27,3 +27,6 @@ All `CNNs_meet_ViTs_32x32.ipynb` models have been trained for ![](https://latex.
 ![](https://i.ibb.co/VLPFsNr/download-1.png)
 
 - `CNNs_meet_ViTs_32x32.ipynb`:
+
+![](https://i.ibb.co/41LJXjb/download.png)
+![](https://i.ibb.co/WD14jc8/download-1.png)
