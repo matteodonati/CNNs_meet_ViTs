@@ -337,6 +337,8 @@ def plot_validation(m_names, histories, xy1, xy2):
   ax2.set_xlabel("Epoch")
   ax2.set_xticks(x)
   ax2.legend()
+	
+  fig.savefig("validation.pdf", bbox_inches = "tight")
 
   plt.show()
   
@@ -360,5 +362,7 @@ def plot_accuracy_vs_flops(m_names, flops, test_acc):
 
   ax.set_ylabel("Test accuracy")
   ax.set_xlabel("FLOPs")
+	
+  fig.savefig("accuracy_vs_flops.pdf", bbox_inches = "tight")
 
   plt.show()
