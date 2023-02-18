@@ -336,8 +336,8 @@ class IRFFN(nn.Module):
     tmp = nn.functional.layer_norm(x, [c, h, w])
     tmp = self.conv1(tmp)
     tmp = self.bn1(tmp)
-    tmp = self.gelu(tmp)
-    tmp = self.dwconv(tmp)
+    tmp_2 = self.gelu(tmp)
+    tmp = self.dwconv(tmp_2) + tmp_2
     tmp = self.bn2(tmp)
     tmp = self.gelu(tmp)
     tmp = self.conv2(tmp)
